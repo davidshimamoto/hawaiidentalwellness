@@ -78,22 +78,83 @@ animateElements.forEach(el => {
     observer.observe(el);
 });
 
-// Form submission handling
+// Form submission handling with AJAX
 const contactForm = document.querySelector('.contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formMessage = document.getElementById('form-message');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Disable submit button to prevent double submissions
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        // Hide any previous messages
+        formMessage.style.display = 'none';
 
         // Get form data
         const formData = new FormData(contactForm);
 
-        // Here you would typically send the data to a server
-        // For now, we'll just show a success message
-        alert('Thank you for your message! We will get back to you soon. Mahalo!');
+        try {
+            // Send form data to PHP handler
+            const response = await fetch('send-appointment.php', {
+                method: 'POST',
+                body: formData
+            });
 
-        // Reset form
-        contactForm.reset();
+            const result = await response.json();
+
+            // Display message
+            formMessage.style.display = 'block';
+
+            if (result.success) {
+                // Success
+                formMessage.style.background = '#d1fae5';
+                formMessage.style.color = '#065f46';
+                formMessage.style.border = '2px solid #10b981';
+                formMessage.innerHTML = `
+                    <strong>✓ Success!</strong><br>
+                    ${result.message}
+                `;
+
+                // Reset form
+                contactForm.reset();
+
+                // Auto-hide message after 10 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 10000);
+
+            } else {
+                // Error
+                formMessage.style.background = '#fee2e2';
+                formMessage.style.color = '#991b1b';
+                formMessage.style.border = '2px solid #ef4444';
+                formMessage.innerHTML = `
+                    <strong>✗ Error</strong><br>
+                    ${result.message}
+                    ${result.errors ? '<br><br>' + result.errors.join('<br>') : ''}
+                `;
+            }
+
+        } catch (error) {
+            // Network or other error
+            formMessage.style.display = 'block';
+            formMessage.style.background = '#fee2e2';
+            formMessage.style.color = '#991b1b';
+            formMessage.style.border = '2px solid #ef4444';
+            formMessage.innerHTML = `
+                <strong>✗ Error</strong><br>
+                There was a problem submitting your request. Please call us at (808) 533-3892 or email david@hawaiidentalwellness.com
+            `;
+            console.error('Form submission error:', error);
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Request';
+        }
     });
 }
 
