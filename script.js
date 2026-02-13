@@ -111,9 +111,9 @@ if (contactForm) {
 
             if (result.success) {
                 // Success
-                formMessage.style.background = '#d1fae5';
-                formMessage.style.color = '#065f46';
-                formMessage.style.border = '2px solid #10b981';
+                formMessage.style.background = '#e0f5f3';
+                formMessage.style.color = '#004F59';
+                formMessage.style.border = '2px solid #2AB3A6';
                 formMessage.innerHTML = `
                     <strong>✓ Success!</strong><br>
                     ${result.message}
@@ -278,7 +278,7 @@ window.addEventListener('load', () => {
 });
 
 // Console message
-console.log('%c🌺 Hawaii Dental Wellness - Made with Aloha 🌺', 'color: #0ea5e9; font-size: 16px; font-weight: bold;');
+console.log('%c🌺 Hawaii Dental Wellness - Made with Aloha 🌺', 'color: #2AB3A6; font-size: 16px; font-weight: bold;');
 
 // RSS Feed Configuration
 const RSS_FEED_URL = 'http://blog.hawaiidentalwellness.com/feed/';
@@ -286,12 +286,12 @@ const MAX_POSTS = 6; // Number of posts to display
 
 // Color gradients for blog cards
 const BLOG_GRADIENTS = [
-    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
+    'linear-gradient(135deg, #2AB3A6 0%, #004F59 100%)',
+    'linear-gradient(135deg, #004F59 0%, #2AB3A6 100%)',
+    'linear-gradient(135deg, #FFD9C2 0%, #2AB3A6 100%)',
+    'linear-gradient(135deg, #AAED8D 0%, #046436 100%)',
+    'linear-gradient(135deg, #046436 0%, #2AB3A6 100%)',
+    'linear-gradient(135deg, #2AB3A6 0%, #FFD9C2 100%)'
 ];
 
 // Message to show if RSS feed fails
