@@ -280,64 +280,134 @@ window.addEventListener('load', () => {
 // Console message
 console.log('%c🌺 Hawaii Dental Wellness - Made with Aloha 🌺', 'color: #0ea5e9; font-size: 16px; font-weight: bold;');
 
-// Blog Posts Data Structure
-const blogPosts = [
-    {
-        id: 1,
-        title: "5 Tips for Maintaining Your Smile This Summer",
-        excerpt: "Summer in Hawaii is beautiful, but the heat and activities can affect your dental health. Learn how to keep your smile bright and healthy all season long.",
-        category: "Tips & Advice",
-        date: "November 15, 2024",
-        author: "Dr. Chad Kawashima",
-        image: "images/blog-placeholder-1.jpg",
-        imageGradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-    },
-    {
-        id: 2,
-        title: "The Benefits of Regular Dental Cleanings",
-        excerpt: "Discover why professional cleanings are essential for your oral health and how they can prevent serious dental issues down the road.",
-        category: "Preventive Care",
-        date: "November 1, 2024",
-        author: "Dr. Randal Motooka",
-        image: "images/blog-placeholder-2.jpg",
-        imageGradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
-    },
-    {
-        id: 3,
-        title: "Teeth Whitening: What You Need to Know",
-        excerpt: "Thinking about brightening your smile? We answer common questions about professional teeth whitening and what to expect from the process.",
-        category: "Cosmetic",
-        date: "October 20, 2024",
-        author: "Dr. Chad Kawashima",
-        image: "images/blog-placeholder-3.jpg",
-        imageGradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
-    }
+// RSS Feed Configuration
+const RSS_FEED_URL = 'http://blog.hawaiidentalwellness.com/feed/';
+const MAX_POSTS = 6; // Number of posts to display
+
+// Color gradients for blog cards
+const BLOG_GRADIENTS = [
+    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
 ];
 
-// Function to render blog posts
-function renderBlogPosts() {
+// Message to show if RSS feed fails
+const NO_POSTS_MESSAGE = 'Check back later for new updates!';
+
+/**
+ * Parse RSS feed XML and extract blog posts
+ */
+function parseRSSFeed(xmlText) {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+    // Check for parsing errors
+    if (xmlDoc.querySelector('parsererror')) {
+        console.error('Error parsing RSS feed');
+        return null;
+    }
+
+    const items = xmlDoc.querySelectorAll('item');
+    const posts = [];
+
+    items.forEach((item, index) => {
+        if (index >= MAX_POSTS) return; // Limit number of posts
+
+        // Extract post data
+        const title = item.querySelector('title')?.textContent || 'Untitled Post';
+        const link = item.querySelector('link')?.textContent || '#';
+        const description = item.querySelector('description')?.textContent || '';
+        const pubDate = item.querySelector('pubDate')?.textContent || '';
+        const category = item.querySelector('category')?.textContent || 'General';
+
+        // Create excerpt (strip HTML and limit length)
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = description;
+        let excerpt = tempDiv.textContent || tempDiv.innerText || '';
+        excerpt = excerpt.substring(0, 150).trim() + (excerpt.length > 150 ? '...' : '');
+
+        // Parse date
+        const date = pubDate ? new Date(pubDate) : new Date();
+
+        posts.push({
+            title,
+            link,
+            excerpt,
+            date,
+            category
+        });
+    });
+
+    return posts;
+}
+
+/**
+ * Fetch blog posts from RSS feed
+ */
+async function fetchBlogPosts() {
+    try {
+        // Use a CORS proxy to fetch the RSS feed
+        const corsProxy = 'https://api.allorigins.win/raw?url=';
+        const response = await fetch(corsProxy + encodeURIComponent(RSS_FEED_URL));
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch RSS feed');
+        }
+
+        const xmlText = await response.text();
+        const posts = parseRSSFeed(xmlText);
+
+        if (posts && posts.length > 0) {
+            return posts;
+        } else {
+            throw new Error('No posts found in RSS feed');
+        }
+    } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        return null; // Return null to indicate no posts available
+    }
+}
+
+/**
+ * Format date for display
+ */
+function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+/**
+ * Render blog posts to the page
+ */
+function renderBlogPosts(posts) {
     const blogGrid = document.getElementById('blog-grid');
 
     if (!blogGrid) return;
 
+    // Clear existing content
     blogGrid.innerHTML = '';
 
-    blogPosts.forEach(post => {
+    // Create cards for each post
+    posts.forEach((post, index) => {
         const blogCard = document.createElement('div');
         blogCard.className = 'blog-card';
 
+        const gradient = BLOG_GRADIENTS[index % BLOG_GRADIENTS.length];
+
         blogCard.innerHTML = `
-            <div class="blog-image" style="background: ${post.imageGradient};">
+            <div class="blog-image" style="background: ${gradient};">
                 <span class="blog-category">${post.category}</span>
             </div>
             <div class="blog-content">
                 <div class="blog-meta">
-                    <span class="blog-date">📅 ${post.date}</span>
-                    <span class="blog-author">✍️ ${post.author}</span>
+                    <span class="blog-date">📅 ${formatDate(post.date)}</span>
                 </div>
                 <h3>${post.title}</h3>
                 <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="#" class="blog-read-more" data-post-id="${post.id}">Read More</a>
+                <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="blog-read-more">Read More</a>
             </div>
         `;
 
@@ -354,25 +424,37 @@ function renderBlogPosts() {
     });
 }
 
-// Initialize blog posts when DOM is loaded
+/**
+ * Initialize blog section
+ */
+async function initializeBlog() {
+    const blogGrid = document.getElementById('blog-grid');
+
+    if (!blogGrid) return;
+
+    // Show loading state
+    blogGrid.innerHTML = '<p style="text-align: center; color: var(--medium-gray); padding: 40px;">Loading latest articles...</p>';
+
+    // Fetch and render posts
+    const posts = await fetchBlogPosts();
+
+    if (posts && posts.length > 0) {
+        renderBlogPosts(posts);
+    } else {
+        // Show "Check back later" message if no posts available
+        blogGrid.innerHTML = `
+            <div style="text-align: center; padding: 60px 20px;">
+                <p style="font-size: 1.2rem; color: var(--medium-gray); margin: 0;">
+                    ${NO_POSTS_MESSAGE}
+                </p>
+            </div>
+        `;
+    }
+}
+
+// Initialize blog when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderBlogPosts);
+    document.addEventListener('DOMContentLoaded', initializeBlog);
 } else {
-    renderBlogPosts();
-}
-
-// Add function to add new blog post
-function addBlogPost(post) {
-    blogPosts.unshift(post);
-    renderBlogPosts();
-}
-
-// Add function to get all blog posts
-function getAllBlogPosts() {
-    return blogPosts;
-}
-
-// Add function to get blog post by ID
-function getBlogPostById(id) {
-    return blogPosts.find(post => post.id === id);
+    initializeBlog();
 }
