@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights - Hawaii Dental Wellness</title>
+    <link rel="icon" type="image/png" href="images/cropped-Hawaii-Dental-Wellness-Icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Meow+Script&display=swap" rel="stylesheet">
+</head>
+<body data-page="insights">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/Hawaii-Dental-Wellness-Logo-Retina.png" alt="Hawaii Dental Wellness" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="meet-the-ohana.html" class="nav-link">Meet Our Ohana</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="insights.html" class="nav-link active">Insights</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="contact.html" class="btn-book">Book Appointment</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero (peach background) -->
+    <section class="page-hero insights-hero">
+        <div class="container">
+            <h1 class="page-hero-title">Deepen Your Smile IQ</h1>
+            <p class="page-hero-subtitle">From the latest clinical innovations to caring for your Keiki's first teeth.</p>
+        </div>
+        <div class="page-hero-decoration">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,55 C300,110 1140,0 1440,55 L1440,110 L0,110 Z" fill="#ffffff"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Category Filter Bar -->
+    <section class="insights-filter-bar">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="technology">Technology</button>
+                <button class="filter-tab" data-filter="tips">Tips</button>
+                <button class="filter-tab" data-filter="news">News</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article: What is Dental Wellness? -->
+    <section class="insights-featured">
+        <div class="container">
+            <div class="featured-article">
+                <div class="featured-label">Featured</div>
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <span class="featured-category-tag">Wellness</span>
+                        <h2>What is Dental Wellness?</h2>
+                        <p class="featured-byline">By Dr. Chad Kawashima</p>
+                        <p class="featured-body">Dental wellness to me means treating the whole person and not just the teeth. It's about preventive care and ensuring everything is balanced so you don't have problems down the road. It means not only taking care of the mouth and teeth, but also taking care of the whole person, as the mouth and teeth are connected and affect the rest of the body and overall health. It also means taking care of the person mentally and emotionally, as a lot of people have phobias about the dentist — making sure that we take care of that aspect as well.</p>
+                        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+                    </div>
+                    <div class="featured-image-placeholder">
+                        <div class="featured-img-block">
+                            <span>Dr. Kawashima</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Collection Section -->
+    <section class="insights-collection">
+        <div class="collection-wave-top">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,30 C360,0 1080,60 1440,30 L1440,0 L0,0 Z" fill="#ffffff"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title collection-title">The Dental Wellness Collection</h2>
+            </div>
+            <div id="blog-grid" class="blog-pillars-grid">
+                <!-- Blog posts loaded by script.js if RSS feed is available -->
+            </div>
+            <!-- Static pillar cards shown when no RSS posts available -->
+            <div id="pillars-static" class="blog-pillars-grid" style="display:none;">
+                <div class="pillar-card" data-category="technology">
+                    <div class="pillar-card-image" style="background: linear-gradient(135deg, #2AB3A6 0%, #004F59 100%);">
+                        <span class="pillar-category-badge">Technology</span>
+                    </div>
+                    <div class="pillar-card-content">
+                        <p class="pillar-meta">Coming Soon</p>
+                        <h3>Modern Tools for Healthier Smiles</h3>
+                        <p>Discover how cutting-edge technology is transforming the dental experience at Hawaii Dental Wellness.</p>
+                        <span class="pillar-read-more">Read More</span>
+                    </div>
+                </div>
+                <div class="pillar-card" data-category="tips">
+                    <div class="pillar-card-image" style="background: linear-gradient(135deg, #FFD9C2 0%, #2AB3A6 100%);">
+                        <span class="pillar-category-badge">Tips</span>
+                    </div>
+                    <div class="pillar-card-content">
+                        <p class="pillar-meta">Coming Soon</p>
+                        <h3>Daily Habits for a Lifetime of Wellness</h3>
+                        <p>Simple, effective tips from our doctors to help you and your Ohana maintain optimal oral health every day.</p>
+                        <span class="pillar-read-more">Read More</span>
+                    </div>
+                </div>
+                <div class="pillar-card" data-category="news">
+                    <div class="pillar-card-image" style="background: linear-gradient(135deg, #AAED8D 0%, #046436 100%);">
+                        <span class="pillar-category-badge">News</span>
+                    </div>
+                    <div class="pillar-card-content">
+                        <p class="pillar-meta">Coming Soon</p>
+                        <h3>From Our Practice to Your Inbox</h3>
+                        <p>Stay up to date with the latest news, events, and announcements from Hawaii Dental Wellness.</p>
+                        <span class="pillar-read-more">Read More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collection-wave-bottom">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/Hawaii-Dental-Wellness-Logo-Retina-White.png" alt="Hawaii Dental Wellness" class="footer-logo-img">
+                    </div>
+                    <p class="footer-text">Bringing ALOHA to dental care, one smile at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meet-the-ohana.html">Meet Our Ohana</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="insights.html">Insights</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">General Dentistry</a></li>
+                        <li><a href="services.html">Cosmetic Dentistry</a></li>
+                        <li><a href="services.html">Restorative Care</a></li>
+                        <li><a href="services.html">Preventive Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://maps.app.goo.gl/icRtzYF4RaJkVBHw7" class="social-link">Google Maps</a>
+                        <a href="https://www.facebook.com/hdwhonolulu" class="social-link">Facebook</a>
+                        <a href="https://www.yelp.com/biz/hawaii-dental-wellness-honolulu?uid=km2cJgn2Ba5nOnEV3HTZ6g&utm_campaign=www_business_share_popup&utm_medium=copy_link&utm_source=(direct)" class="social-link">Yelp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Show static pillars if no RSS blog posts load
+        (function waitForBlog() {
+            const grid = document.getElementById('blog-grid');
+            const pillars = document.getElementById('pillars-static');
+            if (!grid || !pillars) return;
+
+            const check = setInterval(() => {
+                const hasCards = grid.querySelectorAll('.blog-card').length > 0;
+                const loading = grid.querySelector('p');
+                const isDone = loading && !loading.textContent.includes('Loading');
+
+                if (hasCards) {
+                    clearInterval(check);
+                } else if (isDone || grid.innerHTML.trim() === '') {
+                    clearInterval(check);
+                    grid.style.display = 'none';
+                    pillars.style.display = 'grid';
+                }
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(check);
+                if (!grid.querySelectorAll('.blog-card').length) {
+                    grid.style.display = 'none';
+                    pillars.style.display = 'grid';
+                }
+            }, 8000);
+        })();
+
+        // Category filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+                document.querySelectorAll('.pillar-card, .blog-card').forEach(card => {
+                    const cat = card.dataset.category || 'all';
+                    card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+                });
+            });
+        });
+
+        // Newsletter form handler
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMsg = document.getElementById('newsletter-message');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                newsletterMsg.style.display = 'block';
+                newsletterMsg.style.color = 'var(--deep-teal)';
+                newsletterMsg.textContent = 'Mahalo! You\'ve joined our digital Ohana.';
+                newsletterForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>

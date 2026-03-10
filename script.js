@@ -247,9 +247,23 @@ if ('IntersectionObserver' in window) {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// Add active state to navigation based on scroll position
+// Active nav link highlighting — works for both single-page (scroll) and multi-page (pathname)
 const sections = document.querySelectorAll('section[id]');
 
+// Highlight based on current page pathname for page-based links
+const pagePath = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    // Match page links (not hash-only links)
+    const linkPage = href.split('#')[0];
+    if (linkPage && linkPage !== '' && linkPage === pagePath) {
+        link.style.color = 'var(--ocean-blue)';
+        link.style.fontWeight = '600';
+    }
+});
+
+// Highlight based on scroll position for hash-based links (home page)
 const highlightNavigation = () => {
     const scrollY = window.pageYOffset;
 
@@ -262,6 +276,9 @@ const highlightNavigation = () => {
         if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLink.style.color = 'var(--ocean-blue)';
         } else if (navLink) {
+            // Don't reset if it was set by pathname match
+            const linkPage = navLink.getAttribute('href').split('#')[0];
+            if (linkPage && linkPage !== '' && linkPage === pagePath) return;
             navLink.style.color = 'var(--text-dark)';
         }
     });

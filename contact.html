@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Hawaii Dental Wellness</title>
+    <link rel="icon" type="image/png" href="images/cropped-Hawaii-Dental-Wellness-Icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Meow+Script&display=swap" rel="stylesheet">
+</head>
+<body data-page="contact">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/Hawaii-Dental-Wellness-Logo-Retina.png" alt="Hawaii Dental Wellness" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="meet-the-ohana.html" class="nav-link">Meet Our Ohana</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="insights.html" class="nav-link">Insights</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li><a href="contact.html" class="btn-book">Book Appointment</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero contact-hero">
+        <div class="container">
+            <h1 class="page-hero-title">Visit Us Today</h1>
+            <p class="page-hero-subtitle">Ready to experience dental care with Aloha? We'd love to welcome you to our practice.</p>
+        </div>
+        <div class="page-hero-decoration">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,55 C300,110 1140,0 1440,55 L1440,110 L0,110 Z" fill="#ffffff"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="contact-text">Ready to experience dental care with Aloha? We'd love to welcome you to our practice.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-detail">
+                                <h4>Location</h4>
+                                <p>1139 Bethel St Suite 1A<br>Honolulu, HI 96813</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-detail">
+                                <h4>Phone</h4>
+                                <p>(808) 533-3892</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div class="contact-detail">
+                                <h4>Hours</h4>
+                                <p>Monday - Friday: 8am - 5pm<br>Saturday: 8am - 1pm</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-detail">
+                                <h4>Email</h4>
+                                <p>info@hawaiidentalwellness.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="appointment-form">
+                        <h3>Book an Appointment</h3>
+                        <p>Input your information below and we'll get back to you within 24 hours.</p>
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Your Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="General Dentistry">General Dentistry</option>
+                                <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                                <option value="Restorative Care">Restorative Care</option>
+                                <option value="Preventive Care">Preventive Care</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Message (Optional)" rows="4"></textarea>
+                        </div>
+                        <!-- Honeypot field for spam protection (hidden from users) -->
+                        <div class="form-group" style="position: absolute; left: -9999px;">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="submit-btn">Send Request</button>
+                        <div id="form-message" style="margin-top: 15px; padding: 15px; border-radius: 8px; display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/Hawaii-Dental-Wellness-Logo-Retina-White.png" alt="Hawaii Dental Wellness" class="footer-logo-img">
+                    </div>
+                    <p class="footer-text">Bringing ALOHA to dental care, one smile at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meet-the-ohana.html">Meet Our Ohana</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="insights.html">Insights</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">General Dentistry</a></li>
+                        <li><a href="services.html">Cosmetic Dentistry</a></li>
+                        <li><a href="services.html">Restorative Care</a></li>
+                        <li><a href="services.html">Preventive Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://maps.app.goo.gl/icRtzYF4RaJkVBHw7" class="social-link">Google Maps</a>
+                        <a href="https://www.facebook.com/hdwhonolulu" class="social-link">Facebook</a>
+                        <a href="https://www.yelp.com/biz/hawaii-dental-wellness-honolulu?uid=km2cJgn2Ba5nOnEV3HTZ6g&utm_campaign=www_business_share_popup&utm_medium=copy_link&utm_source=(direct)" class="social-link">Yelp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
