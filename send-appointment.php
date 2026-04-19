@@ -43,6 +43,8 @@ $name = sanitize_input($_POST['name'] ?? '');
 $email = sanitize_input($_POST['email'] ?? '');
 $phone = sanitize_input($_POST['phone'] ?? '');
 $service = sanitize_input($_POST['service'] ?? '');
+$preferred_day = sanitize_input($_POST['preferred_day'] ?? '');
+$preferred_time = sanitize_input($_POST['preferred_time'] ?? '');
 $message = sanitize_input($_POST['message'] ?? 'No additional message provided');
 
 // Validation
@@ -62,6 +64,16 @@ if (empty($phone)) {
 
 if (empty($service)) {
     $errors[] = 'Service selection is required';
+}
+
+$valid_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+if (empty($preferred_day) || !in_array($preferred_day, $valid_days)) {
+    $errors[] = 'Preferred day is required';
+}
+
+$valid_times = ['Morning', 'Afternoon'];
+if (empty($preferred_time) || !in_array($preferred_time, $valid_times)) {
+    $errors[] = 'Preferred time is required';
 }
 
 // If validation fails, return errors
@@ -127,6 +139,16 @@ $html_body = "
             </div>
 
             <div class='field'>
+                <div class='field-label'>📅 Preferred Day</div>
+                <div class='field-value'>" . htmlspecialchars($preferred_day) . "</div>
+            </div>
+
+            <div class='field'>
+                <div class='field-label'>🕐 Preferred Time</div>
+                <div class='field-value'>" . htmlspecialchars($preferred_time) . "</div>
+            </div>
+
+            <div class='field'>
                 <div class='field-label'>💬 Additional Message</div>
                 <div class='field-value'>" . nl2br(htmlspecialchars($message)) . "</div>
             </div>
@@ -153,6 +175,8 @@ Name: $name
 Email: $email
 Phone: $phone
 Service Requested: $service
+Preferred Day: $preferred_day
+Preferred Time: $preferred_time
 
 MESSAGE:
 $message
@@ -188,7 +212,7 @@ if ($mail_sent) {
     ]);
 
     // Optional: Send confirmation email to patient
-    send_confirmation_email($email, $name, $service, $from_email);
+    send_confirmation_email($email, $name, $service, $preferred_day, $preferred_time, $from_email);
 
 } else {
     // Error response
@@ -202,7 +226,7 @@ if ($mail_sent) {
 /**
  * Send confirmation email to the patient
  */
-function send_confirmation_email($patient_email, $patient_name, $service, $from_email) {
+function send_confirmation_email($patient_email, $patient_name, $service, $preferred_day, $preferred_time, $from_email) {
     $subject = "Appointment Request Received - Hawaii Dental Wellness";
 
     $html_body = "
@@ -226,7 +250,7 @@ function send_confirmation_email($patient_email, $patient_name, $service, $from_
         <div class='content'>
             <p>Thank you for your appointment request for <strong>" . htmlspecialchars($service) . "</strong>.</p>
 
-            <p>We have received your information and will contact you within 24 hours to schedule your appointment.</p>
+            <p>We have received your preference for a <strong>" . htmlspecialchars($preferred_time) . "</strong> appointment on <strong>" . htmlspecialchars($preferred_day) . "</strong> and will contact you within 24 hours to confirm your appointment.</p>
 
             <div style='background: white; padding: 20px; margin: 20px 0; border-left: 4px solid #0ea5e9; border-radius: 5px;'>
                 <p style='margin: 0;'><strong>📍 Our Location:</strong></p>
