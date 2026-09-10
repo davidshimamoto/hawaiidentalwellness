@@ -4,7 +4,7 @@
  *
  * This script processes appointment form submissions and sends emails.
  * Sends from: appointments@hawaiidentalwellness.com
- * Sends to: info@hawaiidentalwellness.com
+ * Sends to: info@hawaiidentalwellness.com (Bcc: hidentalwellness@gmail.com)
  */
 
 // Prevent direct access
@@ -21,6 +21,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Configuration
 $to_email = 'info@hawaiidentalwellness.com';
+$bcc_email = 'hidentalwellness@gmail.com';
 $from_email = 'appointments@hawaiidentalwellness.com';
 $from_name = 'Hawaii Dental Wellness Appointments';
 
@@ -193,6 +194,7 @@ Please contact the patient within 24 hours.
 $headers = [
     'From: ' . $from_name . ' <' . $from_email . '>',
     'Reply-To: ' . $name . ' <' . $email . '>',
+    'Bcc: ' . $bcc_email,
     'MIME-Version: 1.0',
     'Content-Type: text/html; charset=UTF-8',
     'X-Mailer: PHP/' . phpversion(),
