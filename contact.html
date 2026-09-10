@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Meow+Script&display=swap" rel="stylesheet">
 </head>
 <body data-page="contact">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -24,18 +25,19 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="meet-the-ohana.html" class="nav-link">Meet Our Ohana</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="insights.html" class="nav-link">Insights</a></li>
                     <li><a href="contact.html" class="nav-link active">Contact</a></li>
                     <li><a href="contact.html" class="btn-book">Book Appointment</a></li>
                 </ul>
-                <div class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- Page Hero -->
     <section class="page-hero contact-hero">
@@ -44,7 +46,7 @@
             <p class="page-hero-subtitle">Ready to experience dental care with Aloha? We'd love to welcome you to our practice.</p>
         </div>
         <div class="page-hero-decoration">
-            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M0,55 C300,110 1140,0 1440,55 L1440,110 L0,110 Z" fill="#ffffff"/>
             </svg>
         </div>
@@ -60,28 +62,28 @@
 
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon" aria-hidden="true">📍</div>
                             <div class="contact-detail">
                                 <h4>Location</h4>
                                 <p>1139 Bethel St Suite 1A<br>Honolulu, HI 96813</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">📞</div>
+                            <div class="contact-icon" aria-hidden="true">📞</div>
                             <div class="contact-detail">
                                 <h4>Phone</h4>
                                 <p>(808) 533-3892</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">⏰</div>
+                            <div class="contact-icon" aria-hidden="true">⏰</div>
                             <div class="contact-detail">
                                 <h4>Hours</h4>
                                 <p>Monday - Friday: 8am - 5pm<br>Saturday: 8am - 1pm</p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
+                            <div class="contact-icon" aria-hidden="true">✉️</div>
                             <div class="contact-detail">
                                 <h4>Email</h4>
                                 <p>info@hawaiidentalwellness.com</p>
@@ -92,18 +94,22 @@
                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="appointment-form">
                         <h3>Book an Appointment</h3>
-                        <p>Input your information below and we'll get back to you within 24 hours.</p>
+                        <p>Input your information below and we'll get back to you.</p>
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                            <label for="name-contact">Your Name</label>
+                            <input type="text" id="name-contact" name="name" placeholder="Your Name" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
+                            <label for="email-contact">Your Email</label>
+                            <input type="email" id="email-contact" name="email" placeholder="Your Email" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Your Phone" required>
+                            <label for="phone-contact">Your Phone</label>
+                            <input type="tel" id="phone-contact" name="phone" placeholder="Your Phone" required aria-required="true">
                         </div>
                         <div class="form-group">
-                            <select name="service" required>
+                            <label for="service-contact">Select Service</label>
+                            <select id="service-contact" name="service" required aria-required="true">
                                 <option value="">Select Service</option>
                                 <option value="New Patient">New Patient</option>
                                 <option value="Routine Cleaning">Routine Cleaning</option>
@@ -112,7 +118,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select name="preferred_day" required>
+                            <label for="preferred-day">Preferred Day</label>
+                            <select id="preferred-day" name="preferred_day" required aria-required="true">
                                 <option value="">Preferred Day</option>
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
@@ -123,26 +130,30 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select name="preferred_time" required>
+                            <label for="preferred-time">Preferred Time</label>
+                            <select id="preferred-time" name="preferred_time" required aria-required="true">
                                 <option value="">Preferred Time</option>
                                 <option value="Morning">Morning</option>
                                 <option value="Afternoon">Afternoon</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Message (Optional)" rows="4"></textarea>
+                            <label for="message-contact">Message (Optional)</label>
+                            <textarea id="message-contact" name="message" placeholder="Message (Optional)" rows="4"></textarea>
                         </div>
                         <!-- Honeypot field for spam protection (hidden from users) -->
-                        <div class="form-group" style="position: absolute; left: -9999px;">
+                        <div class="form-group" style="position: absolute; left: -9999px;" aria-hidden="true">
                             <input type="text" name="website" tabindex="-1" autocomplete="off">
                         </div>
                         <button type="submit" class="btn btn-primary btn-full" id="submit-btn">Send Request</button>
-                        <div id="form-message" style="margin-top: 15px; padding: 15px; border-radius: 8px; display: none;"></div>
+                        <div id="form-message" role="alert" aria-live="polite" style="margin-top: 15px; padding: 15px; border-radius: 8px; display: none;"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    </main><!-- /#main-content -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -160,7 +171,6 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="meet-the-ohana.html">Meet Our Ohana</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="insights.html">Insights</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -183,7 +193,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <span>Privacy Policy</span> | <span>Terms of Service</span></p>
             </div>
         </div>
     </footer>

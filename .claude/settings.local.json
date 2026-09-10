@@ -4,7 +4,14 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(where:*)",
       "Bash(python -c:*)",
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(npm --version)",
+      "Bash(adb devices *)",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p \"/c/Users/david/AppData/Local/Temp/claude/C--Github-davidshimamoto-hawaiidentalwellness/635cb38e-a6a9-41d4-b06d-bd8246bc2fd0/scratchpad\")",
+      "Read(//c/Users/david/AppData/Local/Temp/claude/C--Github-davidshimamoto-hawaiidentalwellness/635cb38e-a6a9-41d4-b06d-bd8246bc2fd0//**)",
+      "Bash(curl -s http://localhost:8081/status)",
+      "Bash(mkdir -p \"C:\\\\Github\\\\davidshimamoto\\\\tower-defense-game\\\\.claude\\\\skills\\\\rn-android-dev\")"
     ]
   }
 }

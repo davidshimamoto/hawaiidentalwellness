@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Meow+Script&display=swap" rel="stylesheet">
 </head>
 <body data-page="ohana">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -24,18 +25,19 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="meet-the-ohana.html" class="nav-link active">Meet Our Ohana</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="insights.html" class="nav-link">Insights</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                     <li><a href="contact.html" class="btn-book">Book Appointment</a></li>
                 </ul>
-                <div class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- Hero Section -->
     <section class="ohana-hero">
@@ -47,7 +49,7 @@
             </div>
         </div>
         <div class="ohana-hero-decoration">
-            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M0,55 C300,110 1140,0 1440,55 L1440,110 L0,110 Z" fill="#ffffff"/>
             </svg>
         </div>
@@ -164,7 +166,7 @@
                 <div class="staff-card">
                     <div class="staff-card-inner">
                         <div class="staff-avatar" style="background: linear-gradient(135deg, #2AB3A6 0%, #004F59 100%);">
-                            <span>🦷</span>
+                            <span aria-hidden="true">🦷</span>
                         </div>
                         <div class="staff-info">
                             <h4>Dental Hygienists</h4>
@@ -175,7 +177,7 @@
                 <div class="staff-card">
                     <div class="staff-card-inner">
                         <div class="staff-avatar" style="background: linear-gradient(135deg, #FFD9C2 0%, #2AB3A6 100%);">
-                            <span>🩺</span>
+                            <span aria-hidden="true">🩺</span>
                         </div>
                         <div class="staff-info">
                             <h4>Dental Assistants</h4>
@@ -186,7 +188,7 @@
                 <div class="staff-card">
                     <div class="staff-card-inner">
                         <div class="staff-avatar" style="background: linear-gradient(135deg, #AAED8D 0%, #046436 100%);">
-                            <span>🌺</span>
+                            <span aria-hidden="true">🌺</span>
                         </div>
                         <div class="staff-info">
                             <h4>Front Office Team</h4>
@@ -197,7 +199,7 @@
                 <div class="staff-card">
                     <div class="staff-card-inner">
                         <div class="staff-avatar" style="background: linear-gradient(135deg, #004F59 0%, #2AB3A6 100%);">
-                            <span>💛</span>
+                            <span aria-hidden="true">💛</span>
                         </div>
                         <div class="staff-info">
                             <h4>Patient Care Coordinators</h4>
@@ -208,6 +210,8 @@
             </div>
         </div>
     </section>
+
+    </main><!-- /#main-content -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -225,7 +229,6 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="meet-the-ohana.html">Meet Our Ohana</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="insights.html">Insights</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -248,7 +251,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <span>Privacy Policy</span> | <span>Terms of Service</span></p>
             </div>
         </div>
     </footer>

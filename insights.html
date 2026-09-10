@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Meow+Script&display=swap" rel="stylesheet">
 </head>
 <body data-page="insights">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -24,18 +25,19 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="meet-the-ohana.html" class="nav-link">Meet Our Ohana</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="insights.html" class="nav-link active">Insights</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                     <li><a href="contact.html" class="btn-book">Book Appointment</a></li>
                 </ul>
-                <div class="mobile-menu-toggle">
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- Page Hero (peach background) -->
     <section class="page-hero insights-hero">
@@ -44,7 +46,7 @@
             <p class="page-hero-subtitle">From the latest clinical innovations to caring for your Keiki's first teeth.</p>
         </div>
         <div class="page-hero-decoration">
-            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M0,55 C300,110 1140,0 1440,55 L1440,110 L0,110 Z" fill="#ffffff"/>
             </svg>
         </div>
@@ -53,7 +55,7 @@
     <!-- Category Filter Bar -->
     <section class="insights-filter-bar">
         <div class="container">
-            <div class="filter-tabs">
+            <div class="filter-tabs" role="group" aria-label="Filter articles by category">
                 <button class="filter-tab active" data-filter="all">All</button>
                 <button class="filter-tab" data-filter="technology">Technology</button>
                 <button class="filter-tab" data-filter="tips">Tips</button>
@@ -88,7 +90,7 @@
     <!-- Blog Collection Section -->
     <section class="insights-collection">
         <div class="collection-wave-top">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M0,30 C360,0 1080,60 1440,30 L1440,0 L0,0 Z" fill="#ffffff"/>
             </svg>
         </div>
@@ -137,12 +139,13 @@
             </div>
         </div>
         <div class="collection-wave-bottom">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
             </svg>
         </div>
     </section>
 
+    </main><!-- /#main-content -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -160,7 +163,6 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="meet-the-ohana.html">Meet Our Ohana</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="insights.html">Insights</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -183,7 +185,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 Hawaii Dental Wellness. All rights reserved. | <span>Privacy Policy</span> | <span>Terms of Service</span></p>
             </div>
         </div>
     </footer>

@@ -6,6 +6,8 @@ if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         mobileMenuToggle.classList.toggle('active');
+        const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+        mobileMenuToggle.setAttribute('aria-expanded', String(!isExpanded));
     });
 }
 
