@@ -5,6 +5,7 @@
  * This script processes appointment form submissions and sends emails.
  * Sends from: appointments@hawaiidentalwellness.com
  * Sends to: info@hawaiidentalwellness.com (Bcc: hidentalwellness@gmail.com)
+ * Sends a confirmation to the email address submitted on the form.
  */
 
 // Prevent direct access
@@ -41,7 +42,7 @@ if (!empty($_POST['website'])) {
 
 // Get and sanitize form data
 $name = sanitize_input($_POST['name'] ?? '');
-$email = sanitize_input($_POST['email'] ?? '');
+$email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
 $phone = sanitize_input($_POST['phone'] ?? '');
 $service = sanitize_input($_POST['service'] ?? '');
 $preferred_day = sanitize_input($_POST['preferred_day'] ?? '');
@@ -206,15 +207,15 @@ $headers = [
 $mail_sent = mail($to_email, $subject, $html_body, implode("\r\n", $headers));
 
 if ($mail_sent) {
-    // Success response
+    // Send the patient confirmation before responding so the request
+    // is not closed before mail() runs.
+    send_confirmation_email($email, $name, $service, $preferred_day, $preferred_time, $from_email);
+
     http_response_code(200);
     echo json_encode([
         'success' => true,
         'message' => 'Thank you for your appointment request! We will contact you within 24 hours. Mahalo!'
     ]);
-
-    // Optional: Send confirmation email to patient
-    send_confirmation_email($email, $name, $service, $preferred_day, $preferred_time, $from_email);
 
 } else {
     // Error response
@@ -279,11 +280,17 @@ function send_confirmation_email($patient_email, $patient_name, $service, $prefe
 
     $headers = [
         'From: Hawaii Dental Wellness <' . $from_email . '>',
+        'Reply-To: Hawaii Dental Wellness <' . $from_email . '>',
         'MIME-Version: 1.0',
-        'Content-Type: text/html; charset=UTF-8'
+        'Content-Type: text/html; charset=UTF-8',
+        'X-Mailer: PHP/' . phpversion()
     ];
 
-    mail($patient_email, $subject, $html_body, implode("\r\n", $headers));
+    $header_string = implode("\r\n", $headers);
+    $sent = @mail($patient_email, $subject, $html_body, $header_string, '-f' . $from_email);
+    if (!$sent) {
+        mail($patient_email, $subject, $html_body, $header_string);
+    }
 }
 
 /**
