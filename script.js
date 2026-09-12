@@ -149,7 +149,7 @@ if (contactForm) {
             formMessage.style.border = '2px solid #ef4444';
             formMessage.innerHTML = `
                 <strong>✗ Error</strong><br>
-                There was a problem submitting your request. Please call us at (808) 533-3892 or email david@hawaiidentalwellness.com
+                There was a problem submitting your request. Please call us at (808) 533-3892 or email info@hawaiidentalwellness.com
             `;
             console.error('Form submission error:', error);
         } finally {
